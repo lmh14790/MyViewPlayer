@@ -18,12 +18,16 @@ import android.widget.SeekBar;
 import com.yztc.myviewplayer.R;
 
 /**
+ * 用于视频播放的自定义的控件（surfaceView）
  * Created by Administrator on 2016/7/3.
  */
+
 public class MyVideoView extends SurfaceView {
     private SurfaceHolder surfaceHolder;
+    //弹出窗口
     private PopupWindow mWindow;
     private Context   mContext;
+    //进度条以及全屏和缩小
     private View     myControl;
     private  SeekBar seekBar;
     private   SurfaceHolder.Callback callback=new SurfaceHolder.Callback(){
@@ -63,7 +67,7 @@ public class MyVideoView extends SurfaceView {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
-
+   // 初始化 PopupWindow 并且 设置它显示的位置
     private void init(Context context){
         getHolder().addCallback(callback);
         mContext=context;
@@ -72,7 +76,7 @@ public class MyVideoView extends SurfaceView {
         mWindow.setFocusable(true);
         mWindow.setOutsideTouchable(true);
         mWindow.setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
-        //asdasd
+        // sufaceView点击PopupWindow出现或者消失
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,15 +89,16 @@ public class MyVideoView extends SurfaceView {
         });
         seekBar= (SeekBar) myControl.findViewById(R.id.myseekbar);
     }
-
+   // 暴漏给调用者 seekBar 拖动时的监听事件
     public void setOnSeekBarChangeListener(SeekBar.OnSeekBarChangeListener listener){
         seekBar.setOnSeekBarChangeListener(listener);
     }
-
+   //  设置seekBar最大值
     public void setMax(int max){
      seekBar.setMax(max);
 
     }
+    //  设置seekBar当前进度
     public void setProgress(int progress){
     seekBar.setProgress(progress);
     }
