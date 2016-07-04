@@ -72,6 +72,7 @@ public class MyVideoView extends SurfaceView {
         mWindow.setFocusable(true);
         mWindow.setOutsideTouchable(true);
         mWindow.setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
+        //asdasd
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
